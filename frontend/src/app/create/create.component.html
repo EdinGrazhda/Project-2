@@ -1,0 +1,30 @@
+<div class="container">
+
+    <h1>Krijimi i Userave</h1>
+
+    <div  *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong >{{errormsg}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    
+      <div *ngIf="successmsg" class="alert alert-success  alert-dismissible fade show" role="alert">
+        <strong>{{successmsg}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+<div class="form">
+    <form   [formGroup]="userForm" (ngSubmit)="userSubmit()">
+        <div >
+            <input type="text" class="form-control" formControlName="name" placeholder="Enter Full Name">
+        </div>
+
+        <div >
+            <input type="text" class="form-control" formControlName="email"  placeholder="Email">
+        </div>
+
+        <div class="button">
+            <button class="btn btn-primary btn-sm">Krijo</button>
+        </div>
+    </form>
+</div>
+
+</div>
