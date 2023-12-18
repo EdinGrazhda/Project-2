@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { CreateComponent } from './create/create.component';
+import { TaskDetailsComponent } from './task-details/task-details.component';
+
+import { TaskupdateComponent } from './taskupdate/taskupdate.component';
+import { Create2Component } from './create2/create2.component';
 
 const routes: Routes = [
   {
@@ -21,6 +25,22 @@ const routes: Routes = [
   {
     path:'create',
     component:CreateComponent
+  },
+  {
+    path:'create/:id',
+    component:CreateComponent
+  },
+  {
+    path:'tasksdetails',
+    component:TaskDetailsComponent
+  },
+  {
+    path:'createtasks',
+    component:Create2Component
+  },
+  { 
+    path: 'taskupdate/:id', 
+    component:TaskupdateComponent 
   }
 ];
 

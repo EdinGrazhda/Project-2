@@ -1,6 +1,7 @@
 <div class="container">
 
-    <h1>Krijimi i Userave</h1>
+    <h1 *ngIf="!getparamid">Create Users</h1>
+    <h1 *ngIf="getparamid">Update Users</h1>
 
     <div  *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong >{{errormsg}}</strong> 
@@ -12,7 +13,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 <div class="form">
-    <form   [formGroup]="userForm" (ngSubmit)="userSubmit()">
+    <form   [formGroup]="userForm">
         <div >
             <input type="text" class="form-control" formControlName="name" placeholder="Enter Full Name">
         </div>
@@ -21,8 +22,11 @@
             <input type="text" class="form-control" formControlName="email"  placeholder="Email">
         </div>
 
-        <div class="button">
-            <button class="btn btn-primary btn-sm">Krijo</button>
+        <div class="button" *ngIf="!getparamid" (click)="userSubmit()">
+            <button class="btn btn-primary btn-sm" >Create</button>
+        </div>
+        <div class="button" *ngIf="getparamid" (click)="userUpdate()">
+            <button class="btn btn-dark btn-sm">Update</button>
         </div>
     </form>
 </div>

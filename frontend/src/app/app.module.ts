@@ -8,6 +8,16 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { HttpClientJsonpModule, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { CreateComponent } from './create/create.component';
+import { switchMap } from 'rxjs';
+import { TaskDetailsComponent } from './task-details/task-details.component';
+import { TaskupdateComponent } from './taskupdate/taskupdate.component';
+import { Create2Component } from './create2/create2.component';
+
+
+
+
+
+
 
 
 @NgModule({
@@ -15,7 +25,12 @@ import { CreateComponent } from './create/create.component';
     AppComponent,
     MainComponent,
     UserDetailsComponent,
-    CreateComponent
+    CreateComponent,
+    TaskDetailsComponent,
+    TaskupdateComponent,
+    Create2Component,
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -23,12 +38,12 @@ import { CreateComponent } from './create/create.component';
     HttpClientModule,
     HttpClientJsonpModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     ApiService,
     provideClientHydration(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
   ],
   bootstrap: [AppComponent]
 })

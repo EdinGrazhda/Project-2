@@ -6,41 +6,41 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 @Injectable({
  providedIn: 'root'
 })
-export class ApiService {
+export class TasksserviceService {
+  assignTaskToUser(assignmentData: { taskId: number; userId: number; }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/assign-task`, assignmentData);
+}
  readData: any;
 
  constructor(private http:HttpClient) { }
 
- apiUrl=`http://localhost:3000/users`;
+ apiUrl=`http://localhost:3000/tasks`;
  
 
- getAllData():Observable<any>{
+ getAllTasks():Observable<any>{
     return this.http.get(this.apiUrl);
  }
-
   
 
- createData(data:any):Observable<any>{
-   console.log(data,'createapi==>');
-   
-   return this.http.post(`${this.apiUrl}`,data);
- }
+ createTask(data: any): Observable<any> {
+  console.log(data, 'createtask==>');
+  return this.http.post(`${this.apiUrl}`, data); 
+}
 
  deleteData(id: any): Observable<any> {
   let ids = id;
   return this.http.delete(`${this.apiUrl}/${ids}`, { responseType: 'text' });
 }
 
-  updateData(data:any,id:any):Observable<any>{
+  updateTask(data:any,id:any):Observable<any>{
     let ids = id;
     return this.http.put(`${this.apiUrl}/${ids}`,data);
   }
 
-  getSingleData(id:any):Observable<any>{
+  getSingleTask(id:any):Observable<any>{
     let ids = id;
     return this.http.get(`${this.apiUrl}/${ids}`)
   }
-
 
   assignTask(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/assign-task`, data);
@@ -57,5 +57,10 @@ export class ApiService {
   getTasksByStatus(status: any): Observable<any> {
     return this.http.get(`${this.apiUrl}/tasks-by-status/${status}`);
   }
- 
+
+  getTaskDetailsById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
 }
+
+ 
+ }

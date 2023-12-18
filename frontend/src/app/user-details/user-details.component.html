@@ -1,14 +1,19 @@
 <div class="text">
     <h1>UserDetails</h1>
 </div>
+<div *ngIf="successmsg" class="alert alert-success  alert-dismissible fade show" role="alert">
+  <strong>{{successmsg}}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 <div class="container">
-    
+
     <table class="table table-bordered">
         <thead>
           <tr>
             <th scope="col">ID</th>
             <th scope="col">First</th>
             <th scope="col">Last</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -16,9 +21,18 @@
             <th scope="row">{{item.id}}</th>
             <td>{{item.name}}</td>
             <td>{{item.email}}</td>
+            <td><button class="btn btn-sm btn-danger" (click)="deleteID(item.id)">Delete</button>
+              &nbsp;
+            <!-- <a [routerLink]="['/create',item.id]" class="btn btn-sm btn-success">Update</a> -->
+            </td>
+            
           </tr>
       </table>
 </div>
 <div class="button">
-    <button class="btn btn-success" routerLink="/create">Krijo User</button>
+    <button class="btn btn-success" routerLink="/create">Create User</button>
 </div>
+
+
+
+

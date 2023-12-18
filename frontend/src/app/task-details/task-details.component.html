@@ -1,0 +1,83 @@
+<div class="container">
+    <h1>Task Management System</h1>
+</div>
+<div id="table" class="container">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Task Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of readData">
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.task_name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.status}}</td>
+            <td>
+              <button class="btn btn-sm btn-danger" (click)="deleteID(item.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <div class="button">
+        <button class="btn btn-success" routerLink="/createtasks">Create Tasks</button>
+    </div>
+</div>
+<br>
+
+<div class="main">
+    <div  *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong >{{errormsg}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    
+      <div *ngIf="successmsg" class="alert alert-success  alert-dismissible fade show" role="alert">
+        <strong>{{successmsg}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <div class="container">
+        <form [formGroup]="taskForm">
+
+            <div>
+                <label>Task Name</label>
+                <input type="text" class="form-control" formControlName="task_name" placeholder="Task Name"><br>
+            </div>
+
+            <div>
+                <label>User Name</label>
+                <input type="text" class="form-control" formControlName="user_name" placeholder="User Name"><br>
+            </div>
+
+            <div>
+                <label>Description</label>
+                <input type="text" class="form-control" formControlName="descripton" placeholder="Description"><br>
+            </div>
+
+            <div>
+                <label>Status</label>
+                <select  class="form-control" formControlName="status">
+                  <option selected value="To do">To do</option>
+                  <option value="In progress">In progress</option>
+                  <option value="Blocked">Blocked</option>
+                  <option value="In review">In review</option>
+                  <option value="Done">Done</option>
+                </select>
+            </div><br>
+
+            <div>
+                <label>Created At</label>
+                <input type="date" class="form-control" formControlName="created_at" placeholder="Created At"><br>
+            </div>
+
+          
+
+            <button class="btn btn-primary" (click)="taskAssign()">Assign a task to a user</button>
+        </form>
+    </div>
+</div>
+             
